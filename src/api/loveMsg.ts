@@ -7,18 +7,10 @@ import { getTian } from '../utils/http'
 enum LoveMsgURL {
   // 天气接口：默认获取最近7天的数据
   weather = 'http://api.tianapi.com/tianqi/index',
-  // 每日简报
-  dailyBriefing = 'http://api.tianapi.com/bulletin/index',
-  // 今日头条
-  topNews = 'http://api.tianapi.com/topnews/index',
-  // 最美宋词
-  songLyrics = 'http://api.tianapi.com/zmsc/index',
-  // 每日一句美好英语
+  // 每日英语
   dayEnglish = 'http://api.tianapi.com/everyday/index',
-  // 韩寒主编的ONE一个杂志，本接口返回每日一句
+  // ONE一个
   oneMagazines = 'http://api.tianapi.com/one/index',
-  // 故事大全
-  storybook = 'http://api.tianapi.com/story/index',
   // 网易云热评
   netEaseCloud = 'http://api.tianapi.com/hotreview/index',
   // 获取农历信息
@@ -27,12 +19,20 @@ enum LoveMsgURL {
   saylove = 'http://api.tianapi.com/saylove/index',
   // 彩虹屁
   caihongpi = 'http://api.tianapi.com/caihongpi/index',
-  // 励志古言
-  inspirationalWord = 'http://api.tianapi.com/lzmy/index',
   // 笑话
   joke = 'http://api.tianapi.com/joke/index',
   // 一言
   oneWord = 'https://v1.hitokoto.cn/?encode=json',
+  // 毒鸡汤
+  dujitang = 'http://api.tianapi.com/dujitang/index',
+  // 经典台词
+  dialogue = 'http://api.tianapi.com/dialogue/index',
+  // 早安心语
+  zaoan = 'http://api.tianapi.com/zaoan/index',
+  // 晚安心语
+  wanan = 'http://api.tianapi.com/wanan/index',
+  // 舔狗日记
+  tiangou = 'http://api.tianapi.com/tiangou/index',
 }
 
 class API {
@@ -52,25 +52,6 @@ class API {
   // 天气
   async getWeather(city_name: string): Promise<IWeatherResponseProps> {
     const res = await getTian({ url: LoveMsgURL.weather, params: { city: city_name } })
-    console.log(res)
-    return res?.[0]
-  }
-
-  // 每日简报
-  async getDailyBriefing() {
-    const res = await getTian<DailyBriefing[]>({ url: LoveMsgURL.dailyBriefing })
-    return res
-  }
-
-  // 今日头条
-  async getTianTopNews() {
-    const res = await getTian<TodayHeadlines[]>({ url: LoveMsgURL.topNews })
-    return res
-  }
-
-  // 最美宋词
-  async getSongLyrics() {
-    const res = await getTian<IVerseProps[]>({ url: LoveMsgURL.songLyrics })
     return res?.[0]
   }
 
@@ -83,12 +64,6 @@ class API {
   // one一个杂志
   async getOneMagazines() {
     const res = await getTian<OneMagazines[]>({ url: LoveMsgURL.oneMagazines })
-    return res?.[0]
-  }
-
-  // 故事大全
-  async getStorybook() {
-    const res = await getTian<StorybookProps[]>({ url: LoveMsgURL.storybook })
     return res?.[0]
   }
 
@@ -131,6 +106,36 @@ class API {
       console.log(error)
       return null
     }
+  }
+
+  // 毒鸡汤
+  async getDujitang() {
+    const res = await getTian<SayloveProps[]>({ url: LoveMsgURL.dujitang })
+    return res?.[0]
+  }
+
+  // 经典台词
+  async getDialogue() {
+    const res = await getTian<DialogueProps[]>({ url: LoveMsgURL.dialogue })
+    return res?.[0]
+  }
+
+  // 早安心语
+  async getZaoan() {
+    const res = await getTian<SayloveProps[]>({ url: LoveMsgURL.zaoan })
+    return res?.[0]
+  }
+
+  // 晚安心语
+  async getWanan() {
+    const res = await getTian<SayloveProps[]>({ url: LoveMsgURL.wanan })
+    return res?.[0]
+  }
+
+  // 舔狗日记
+  async getTiangou() {
+    const res = await getTian<SayloveProps[]>({ url: LoveMsgURL.tiangou })
+    return res?.[0]
   }
 }
 

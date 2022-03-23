@@ -3,18 +3,25 @@
  * @description 说午安
  */
 import API from '../../api/loveMsg'
+import { getConfig } from '../../utils/getConfig'
 import { wxNotify } from '../WxNotify'
 
-export const goodAfternoon = async() => {
+const CONFIG = getConfig().loveMsg
+
+export const goodAfternoon = async () => {
   const res = await API.getJoke()
 
-  let text = '今日份午安来喽:\n'
+  let text = `${CONFIG.girl_name}下午好呀~\n`
 
   text += `
 请欣赏以下雷人笑话😝\n`
 
   text += `
-${res.map(n => `『${n.title}』${n.content}`).join('\n\n')}`
+${res.map((n) => `『${n.title}』${n.content}`).join('\n\n')}`
+
+  const result = await API.getDujitang()
+  text += `
+\n\n😏😏今日份『毒鸡汤』:\n“${result.content}”`
 
   const template = {
     msgtype: 'text',

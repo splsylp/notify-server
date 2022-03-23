@@ -28,81 +28,6 @@ interface IWeatherResponseProps {
   tips: string
 }
 
-interface IVerseProps {
-  /** 长安白日照春空，绿杨结烟垂袅风。 */
-  content: string
-  /** 阳春歌 */
-  origin: string
-  /** 李白 */
-  author: string
-  /** 古诗文-天气-太阳 */
-  category: string
-  /** 天行数据接口 名称 */
-  source: string
-}
-
-// 每日简报
-interface DailyBriefing {
-  mtime: string
-  title: string
-  digest: string
-  source: string
-  url: string
-  imgsrc: string
-}
-
-// 今日头条
-interface TodayHeadlines {
-  ctime: string
-  title: string
-  description: string
-  picUrl: string
-  url: string
-  source: string
-}
-
-// 最美宋词
-interface IVerseProps {
-  /** 长安白日照春空，绿杨结烟垂袅风。 */
-  content: string
-  /** 阳春歌 */
-  origin: string
-  /** 李白 */
-  author: string
-  /** 古诗文-天气-太阳 */
-  category: string
-  /** 天行数据接口 名称 */
-  source: string
-}
-
-// 每日一句好英语
-interface ResEnglishProps {
-  content: string
-  note: string
-  imgurl: string
-  date: string
-}
-
-// 韩寒主编的ONE一个杂志，本接口返回每日一句
-interface OneMagazines {
-  word: string
-  wordfrom: string
-  imgurl: string
-  note: string
-}
-
-// 故事大全
-interface StorybookProps {
-  title: string
-  content: string
-}
-
-// 网易云热评
-interface NetEaseCloudProps {
-  source: string
-  content: string
-}
-
 // 获取农历信息
 interface ResLunarDateProps {
   lunar_festival: string
@@ -112,16 +37,31 @@ interface ResLunarDateProps {
   jieqi: string
 }
 
-// 土味情话
-interface SayloveProps {
+// 每日英语
+interface ResEnglishProps {
+  content: string
+  note: string
+  imgurl: string
+  date: string
+}
+
+// ONE一个
+interface OneMagazines {
+  word: string
+  wordfrom: string
+  imgurl: string
+  note: string
+}
+
+// 网易云热评
+interface NetEaseCloudProps {
+  source: string
   content: string
 }
 
-// 励志古言
-interface InspirationalWordProps {
-  saying: string
-  transl: string
-  source: string
+// 土味情话
+interface SayloveProps {
+  content: string
 }
 
 // 雷人笑话
@@ -138,6 +78,13 @@ interface OneWordProps {
   creator: string
 }
 
+// 经典台词
+interface DialogueProps {
+  dialogue: string
+  english: string
+  source: string
+}
+
 /**
  * 模板
  */
@@ -147,13 +94,14 @@ type TextCardTemplateProps = IWeatherResponseProps & {
   oneWord?: OneWordProps | null
 }
 
-// goodEvening
+// goodMorning
 type TextTemplateProps = {
+  zaoan: SayloveProps | null
   sayLove: SayloveProps | null
   caiHongpi: SayloveProps | null
   oneWord: OneWordProps | null
-  songLyrics: IVerseProps | null
   oneMagazines: OneMagazines | null
   netEaseCloud: NetEaseCloudProps | null
   dayEnglish: ResEnglishProps | null
+  dialogue: DialogueProps | null
 }

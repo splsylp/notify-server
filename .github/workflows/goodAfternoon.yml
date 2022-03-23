@@ -1,12 +1,12 @@
-name: goodEvening for you
+name: goodAfternoon for you
 on:
   workflow_dispatch:
     branches:
       - master
   schedule:
     # `分 时 天 月 周` 时按照标准时间 北京时间=标准时间+8 18表示北京时间早上2点
-    # 晚上 11：20
-    - cron: '20 15 * * *'
+    # 下午 3:00
+    - cron: '00 7 * * *'
 # on:
 #   push:
 #     branches:
@@ -49,4 +49,4 @@ jobs:
           WX_APP_ID: ${{ secrets.WX_APP_ID }}
           WX_APP_SECRET: ${{ secrets.WX_APP_SECRET }}
           TIAN_API_KEY: ${{ secrets.TIAN_API_KEY }}
-          MESSAGE_TYPE: goodEvening
+          MESSAGE_TYPE: goodAfternoon
