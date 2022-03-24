@@ -30,10 +30,12 @@ interface IWeatherResponseProps {
 
 // 获取农历信息
 interface ResLunarDateProps {
+  gregoriandate: string // '2022-03-24'
+  lunardate: string // '2022-2-22' 注意月份不是两位
   lunar_festival: string
   festival: string
-  lubarmonth: string
-  lunarday: string
+  lubarmonth: string // 二月
+  lunarday: string // 廿二
   jieqi: string
 }
 
