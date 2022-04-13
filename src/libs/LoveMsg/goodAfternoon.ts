@@ -9,7 +9,7 @@ import { wxNotify } from '../WxNotify'
 const CONFIG = getConfig().loveMsg
 
 export const goodAfternoon = async () => {
-  const res = await API.getJoke()
+  const res = await API.getJoke(3)
 
   let text = `${CONFIG.girl_name}下午好呀~\n`
 
@@ -21,7 +21,7 @@ ${res.map((n) => `『${n.title}』${n.content}`).join('\n\n')}`
 
   const result = await API.getDujitang()
   text += `
-\n\n😏😏今日份『毒鸡汤』:\n“${result.content}”`
+\n\n😏😏今日份『毒鸡汤』:\n${result.content}`
 
   const template = {
     msgtype: 'text',

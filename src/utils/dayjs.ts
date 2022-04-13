@@ -16,7 +16,8 @@ const WEEKS: { [key: number]: string } = {
 }
 
 export const weekToday = () => {
-  const week = dayjs().get('days')
+  const beijingTime = dayjs().add(8, 'hour')
+  const week = beijingTime.get('days')
   return WEEKS[week]
 }
 

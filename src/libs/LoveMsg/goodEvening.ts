@@ -11,13 +11,13 @@ const CONFIG = getConfig().loveMsg
 export const goodEvening = async () => {
   let text = `晚上好呀，${CONFIG.girl_name}~\n`
 
-  const wanan = await API.getWanan()
-  text += `
-『晚安心语』\n“${wanan.content}”\n`
-
   const tiangou = await API.getTiangou()
   text += `
-『舔狗日记』\n“${tiangou.content}”\n`
+『舔狗日记』\n${tiangou.content}\n`
+
+  const wanan = await API.getWanan()
+  text += `
+『晚安心语』\n${wanan.content}\n`
 
   text += `
 不要再熬夜了${CONFIG.girl_name}，对手机不好~\n
