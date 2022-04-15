@@ -9,7 +9,7 @@ import { wxNotify } from '../WxNotify'
 const CONFIG = getConfig().loveMsg
 
 export const goodAfternoon = async () => {
-  const res = await API.getJoke(3)
+  const res = await API.getJoke(5)
 
   let text = `${CONFIG.girl_name}下午好呀~\n`
 
