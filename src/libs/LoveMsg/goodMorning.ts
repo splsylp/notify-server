@@ -148,7 +148,7 @@ const boyBirthday = async () => {
       },
     }
     console.log('boy birth---', template)
-    // await wxNotify(template)
+    await wxNotify(template)
   } catch (e) {
     console.log('boy birth error: ', e)
   }
