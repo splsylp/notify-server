@@ -55,7 +55,7 @@ const goodWord = async () => {
     const template = textTemplate(data)
     console.log('goodWord', template)
 
-    wxNotify(template)
+    // wxNotify(template)
   } catch (error) {
     console.log('goodWord:err', error)
   }
@@ -75,7 +75,7 @@ const weatherInfo = async () => {
       lunar = lunarInfo
 
       // 发送消息
-      await wxNotify(template)
+      // await wxNotify(template)
     }
   } catch (error) {
     console.log('weatherInfo:err', error)
@@ -123,7 +123,38 @@ const getAge = (birth = '') => {
 
 // 👦🏻自己生日
 const boyBirthday = async () => {
+  try {
+    const birth = BOY_BIRTHDAY
+    const year = today.split('-')?.[0]
+    const birthYear = birth?.split('-')?.[0] || '0'
+    const birthMonth = birth?.split('-')?.[1]
+    const birthDay = birth?.split('-')?.[2]
+    // 生日录入的农历日期
+    // if (lunar.lubarmonth === birthMonth && lunar.lunarday === birthDay) return +year - +birthYear
+    const age = +year - +birthYear
+    const text = `
+    birth: ${birth}\n
+    year: ${year}\n
+    birthYear: ${birthYear}\n
+    birthMonth: ${birthMonth}\n
+    birthDay: ${birthDay}\n
+    equal: ${lunar.lubarmonth === birthMonth && lunar.lunarday === birthDay}\n
+    age: ${age}\n
+  `
+    const template = {
+      msgtype: 'text',
+      text: {
+        content: text,
+      },
+    }
+    console.log('boy birth---', template)
+    // await wxNotify(template)
+  } catch (e) {
+    console.log('boy birth error: ', e)
+  }
+  return
   const age = getAge(BOY_BIRTHDAY)
+  console.log('age---', age)
   if (age > 0) {
     const text = `哇哈哈，今天是我的生日耶~好开心呀！😄😄\n
 ${CONFIG.girl_name}想好要送我什么🎁了吗？${CONFIG.boy_name}可在这眼巴巴的等着呢~\n
@@ -172,7 +203,7 @@ const festival = async () => {
 
 // goodMorning
 export const goodMorning = async () => {
-  await goodWord()
+  // await goodWord()
   await weatherInfo()
   await festival()
 }
