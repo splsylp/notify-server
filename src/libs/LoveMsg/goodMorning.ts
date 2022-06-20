@@ -133,8 +133,6 @@ const boyBirthday = async () => {
     // if (lunar.lubarmonth === birthMonth && lunar.lunarday === birthDay) return +year - +birthYear
     const age = +year - +birthYear
     const text = `
-    process.env: ${process.env}\n
-    process.env: ${JSON.stringify(process.env)}\n
     TIAN_API_KEY: ${TIAN_API_KEY}
     birth: ${birth}\n
     year: ${year}\n
