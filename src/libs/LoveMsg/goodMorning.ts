@@ -14,7 +14,7 @@ dotenv.config()
 
 // WEDDING_DAY日期格式为: 2022-01-01
 // BOY_BIRTHDAY / GIRL_BIRTHDAY日期格式为: 2022-正月-初一
-const { BOY_BIRTHDAY, GIRL_BIRTHDAY, WEDDING_DAY } = process.env
+const { BOY_BIRTHDAY, GIRL_BIRTHDAY, WEDDING_DAY, TIAN_API_KEY } = process.env
 
 const CONFIG = getConfig().loveMsg
 
@@ -133,6 +133,9 @@ const boyBirthday = async () => {
     // if (lunar.lubarmonth === birthMonth && lunar.lunarday === birthDay) return +year - +birthYear
     const age = +year - +birthYear
     const text = `
+    process.env: ${process.env}\n
+    process.env: ${JSON.stringify(process.env)}\n
+    TIAN_API_KEY: ${TIAN_API_KEY}
     birth: ${birth}\n
     year: ${year}\n
     birthYear: ${birthYear}\n
